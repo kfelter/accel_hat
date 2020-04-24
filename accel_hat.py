@@ -58,9 +58,9 @@ def display_readings(hat, x_range, y_range, z_range):
 
     # Render the bars
     screen = np.zeros((8, 8, 3), dtype=np.uint8)
-    render_bar(screen, (0, 0), 2, round(x), color=(255, 0, 0))
-    render_bar(screen, (3, 0), 2, round(y), color=(0, 255, 0))
-    render_bar(screen, (6, 0), 2, round(z), color=(0, 0, 255))
+    render_bar(screen, (0, 0), 2, round(x), color=(110, 0, 0))
+    render_bar(screen, (3, 0), 2, round(y), color=(0, 110, 0))
+    render_bar(screen, (6, 0), 2, round(z), color=(0, 0, 110))
     hat.set_pixels([pixel for row in screen for pixel in row])
     return x,y,z
 
@@ -92,7 +92,6 @@ def flash(hat, c, sec):
 
 f = {}
 hat = SenseHat()
-readings = ["time,x,y,z"]
 recording = False
 x_zero, y_zero, z_zero = zero_cal()
 x_range, y_range, z_range = zero_range(1, x_zero, y_zero, z_zero)
@@ -111,13 +110,15 @@ while True:
                 recording = True
                 f = open("/home/pi/dat/accel.{}.dat".format(time.time()),"w+")
                 f.write("{},{},{},{}\n".format("time", "x","y","z"))
-                flash(hat, (255, 0, 0), 0.10)
+                flash(hat, (155, 0, 0), 0.04)
+                flash(hat, (155, 0, 0), 0.04)
+                flash(hat, (155, 0, 0), 0.04)
         if event.action == 'pressed' and event.direction == 'left':
             if recording:
                 recording = False
                 f.close()
-                flash(hat, (0, 255, 0), 0.10)
-                flash(hat, (0, 255, 0), 0.10)
+                flash(hat, (0, 155, 0), 0.10)
+                flash(hat, (0, 155, 0), 0.10)
         if event.action == 'pressed' and event.direction == 'middle':
             old_zoom = (z_range[1]-z_range[0])/2
             time.sleep(3)
