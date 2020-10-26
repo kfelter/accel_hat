@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-# This file has been written to your home directory for convenience. It is
-# saved as "/home/pi/bar_graph-2020-04-11-15-28-26.py"
 
 import numpy as np
 from time import sleep
