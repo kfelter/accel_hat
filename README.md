@@ -1,6 +1,9 @@
 # Purpose
 This is an app for displaying and recording accelerometer data with the raspberry pi sense hat
 
+# Demo Video
+https://youtu.be/5HPpYppDnnY
+
 # Controls
 | Button | Action | Detail |
 | ------ | ------ | ------ |
